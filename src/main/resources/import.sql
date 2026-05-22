@@ -1,14 +1,13 @@
-INSERT INTO task (created_at, deadline, id, title, description)  VALUES (CURRENT_TIMESTAMP, TIMESTAMPADD(DAY, 7, CURRENT_TIMESTAMP), NEXTVAL('task_seq'), 'Comprar alimentos', 'Hacer una lista de compras para el supermercado.');
-INSERT INTO task (created_at, deadline, id, title, description)  VALUES (CURRENT_TIMESTAMP, TIMESTAMPADD(DAY, 2, CURRENT_TIMESTAMP), NEXTVAL('task_seq'), 'Pagar facturas', 'Pagar la factura de electricidad antes de la fecha límite.');
-INSERT INTO task (created_at, deadline, id, title, description) VALUES (CURRENT_TIMESTAMP, TIMESTAMPADD(DAY, 14, CURRENT_TIMESTAMP), NEXTVAL('task_seq'), 'Estudiar para el examen', 'Revisar los temas de matemáticas y física para el próximo examen.');
-INSERT INTO task (created_at, deadline, id, title, description) VALUES (CURRENT_TIMESTAMP, TIMESTAMPADD(HOUR, 12, CURRENT_TIMESTAMP), NEXTVAL('task_seq'), 'Reunión con el equipo', 'Preparar los puntos de la reunión semanal con el equipo de trabajo.');
-INSERT INTO task (created_at, deadline, id, title, description) VALUES (CURRENT_TIMESTAMP, TIMESTAMPADD(DAY, 5, CURRENT_TIMESTAMP), NEXTVAL('task_seq'), 'Llamar al doctor', 'Agendar una cita con el médico para el chequeo anual.');
-INSERT INTO task (created_at, deadline, id, title, description) VALUES (CURRENT_TIMESTAMP, TIMESTAMPADD(DAY, 10, CURRENT_TIMESTAMP), NEXTVAL('task_seq'), 'Limpiar la casa', 'Organizar el cuarto, limpiar las ventanas y aspirar la alfombra.');
-INSERT INTO task (created_at, deadline, id, title, description) VALUES (CURRENT_TIMESTAMP, TIMESTAMPADD(DAY, 20, CURRENT_TIMESTAMP), NEXTVAL('task_seq'), 'Leer un libro', 'Terminar de leer "Cien años de soledad" de Gabriel García Márquez.');
-INSERT INTO task (created_at, deadline, id, title, description) VALUES (CURRENT_TIMESTAMP, TIMESTAMPADD(HOUR, 48, CURRENT_TIMESTAMP), NEXTVAL('task_seq'), 'Actualizar el currículum', 'Agregar la última experiencia laboral y cursos realizados.');
-INSERT INTO task (created_at, deadline, id, title, description) VALUES (CURRENT_TIMESTAMP, TIMESTAMPADD(DAY, 3, CURRENT_TIMESTAMP), NEXTVAL('task_seq'), 'Comprar regalos', 'Buscar ideas para los regalos de cumpleaños de la familia.');
-INSERT INTO task (created_at, deadline, id, title, description) VALUES (CURRENT_TIMESTAMP, TIMESTAMPADD(DAY, 15, CURRENT_TIMESTAMP), NEXTVAL('task_seq'), 'Planificar vacaciones', 'Investigar destinos turísticos y elaborar un presupuesto para el viaje.');
+INSERT INTO user_entity (id, username, email, password, fullname, role) VALUES (1, 'admin', 'admin@todo.com', '$2a$10$/9T9m8cor5YT5Z0ncT.iVezBH3FGOGvktDN.JJrIaINlp.5N38GoG', 'Administrador', 'ADMIN');
+INSERT INTO user_entity (id, username, email, password, fullname, role) VALUES (2, 'gestor', 'gestor@todo.com', '$2a$10$/9T9m8cor5YT5Z0ncT.iVezBH3FGOGvktDN.JJrIaINlp.5N38GoG', 'Gestor', 'GESTOR');
+INSERT INTO user_entity (id, username, email, password, fullname, role) VALUES (3, 'user', 'user@todo.com', '$2a$10$/9T9m8cor5YT5Z0ncT.iVezBH3FGOGvktDN.JJrIaINlp.5N38GoG', 'Usuario Normal', 'USER');
 
-INSERT INTO user_entity (id, email, username, password, is_admin) VALUES (NEXTVAL('user_entity_seq'), 'pepe@openwebinars.net','pepe','{noop}12345',false);
+INSERT INTO category (id, title) VALUES (1, 'Personal');
+INSERT INTO category (id, title) VALUES (2, 'Trabajo');
+INSERT INTO category (id, title) VALUES (3, 'Estudios');
 
-UPDATE task SET author_id = CURRVAL('user_entity_seq');
+INSERT INTO task (id, created_at, deadline, title, description, completed, priority, author_id, category_id) VALUES (1, NOW(), DATE_ADD(NOW(), INTERVAL 7 DAY), 'Comprar alimentos', 'Hacer una lista de compras para el supermercado.', false, 'MEDIUM', 3, 1);
+INSERT INTO task (id, created_at, deadline, title, description, completed, priority, author_id, category_id) VALUES (2, NOW(), DATE_ADD(NOW(), INTERVAL 2 DAY), 'Pagar facturas', 'Pagar la factura de electricidad antes de la fecha límite.', false, 'HIGH', 3, 2);
+INSERT INTO task (id, created_at, deadline, title, description, completed, priority, author_id, category_id) VALUES (3, NOW(), DATE_ADD(NOW(), INTERVAL 14 DAY), 'Estudiar para el examen', 'Revisar los temas para el próximo examen.', false, 'HIGH', 3, 3);
+INSERT INTO task (id, created_at, deadline, title, description, completed, priority, author_id, category_id) VALUES (4, NOW(), DATE_ADD(NOW(), INTERVAL 5 DAY), 'Llamar al doctor', 'Agendar una cita con el médico para el chequeo anual.', false, 'LOW', 3, 1);
+INSERT INTO task (id, created_at, deadline, title, description, completed, priority, author_id, category_id) VALUES (5, NOW(), DATE_ADD(NOW(), INTERVAL 20 DAY), 'Leer un libro', 'Terminar de leer Cien años de soledad.', false, 'LOW', 3, 1);
