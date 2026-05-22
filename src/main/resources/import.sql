@@ -1,6 +1,6 @@
-INSERT INTO user_entity (id, username, email, password, fullname, role) VALUES (1, 'admin', 'admin@todo.com', '$2a$10$RwHfEbJo.5nV94vcK4qBJOA/3TnhUO7aLWva2cy9hJB0f7wJvISiS', 'Administrador', 'ADMIN');
-INSERT INTO user_entity (id, username, email, password, fullname, role) VALUES (2, 'gestor', 'gestor@todo.com', '$2a$10$RwHfEbJo.5nV94vcK4qBJOA/3TnhUO7aLWva2cy9hJB0f7wJvISiS', 'Gestor', 'GESTOR');
-INSERT INTO user_entity (id, username, email, password, fullname, role) VALUES (3, 'user', 'user@todo.com', '$2a$10$RwHfEbJo.5nV94vcK4qBJOA/3TnhUO7aLWva2cy9hJB0f7wJvISiS', 'Usuario Normal', 'USER');
+INSERT INTO user_entity (id, username, email, password, fullname, role) VALUES (1, 'admin', 'admin@todo.com', '$2a$10$blmJbdtAgE/.nV5vPOfcSuoIez6s1h86WxMro6GwjQfmFvKQPlhgu', 'Administrador', 'ADMIN');
+INSERT INTO user_entity (id, username, email, password, fullname, role) VALUES (2, 'gestor', 'gestor@todo.com', '$2a$10$blmJbdtAgE/.nV5vPOfcSuoIez6s1h86WxMro6GwjQfmFvKQPlhgu', 'Gestor', 'GESTOR');
+INSERT INTO user_entity (id, username, email, password, fullname, role) VALUES (3, 'user', 'user@todo.com', '$2a$10$blmJbdtAgE/.nV5vPOfcSuoIez6s1h86WxMro6GwjQfmFvKQPlhgu', 'Usuario Normal', 'USER');
 
 INSERT INTO category (id, title) VALUES (1, 'Personal');
 INSERT INTO category (id, title) VALUES (2, 'Trabajo');
