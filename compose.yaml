@@ -8,18 +8,26 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   backend:
     image: wolion/todo-rest:1.0
     ports:
       - "8080:8080"
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/todo_rest_daw?useSSL=false&serverTimezone=Europe/Madrid
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: 1234
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    command: >
+      sh -c "java -jar target/*.jar
+      --spring.datasource.url=jdbc:mysql://mysql:3306/todo_rest_daw?useSSL=false
+      --spring.datasource.username=root
+      --spring.datasource.password=1234
+      --spring.jpa.hibernate.ddl-auto=update"
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
+    restart: on-failure
 
 volumes:
   mysql_data:
